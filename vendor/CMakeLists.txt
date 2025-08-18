@@ -1,0 +1,31 @@
+# Disable precompiled headers when using MinGW, because ASLR (an optional
+# Windows Security feature) can interfere with PCH generation and cause the
+# compiler to crash.
+if(MINGW)
+    set_directory_properties(PROPERTIES DISABLE_PRECOMPILE_HEADERS ON)
+endif()
+
+add_subdirectory(SDL EXCLUDE_FROM_ALL)
+
+# Set SDLxyz_VENDORED to ON so that the corresponding SDL extension builds its
+# own dependencies.
+
+set(SDLTTF_VENDORED ON)
+add_subdirectory(SDL_ttf EXCLUDE_FROM_ALL)
+
+set(SDLIMAGE_VENDORED ON)
+set(SDLIMAGE_AVIF OFF)
+set(SDLIMAGE_BMP OFF)
+set(SDLIMAGE_JPEG OFF)
+set(SDLIMAGE_WEBP OFF)
+add_subdirectory(SDL_image EXCLUDE_FROM_ALL)
+
+# Link SDL to our executable.
+# This also makes its include directory available to us.
+add_library(vendor INTERFACE)
+target_link_libraries(
+    vendor INTERFACE
+    SDL3_image::SDL3_image
+    SDL3_ttf::SDL3_ttf
+    SDL3::SDL3
+)
