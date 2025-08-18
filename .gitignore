@@ -9,6 +9,13 @@ thumbs.db
 .vscode/
 .idea/
 
+# CMake build directory
+build/
+
+# CLion build directory
+cmake-build-debug/
+cmake-build-release/
+
 # Prerequisites
 *.d
 
