@@ -20,6 +20,15 @@ set(SDLIMAGE_JPEG OFF)
 set(SDLIMAGE_WEBP OFF)
 add_subdirectory(SDL_image EXCLUDE_FROM_ALL)
 
+# Fixes GH-9: Compilation fails due to "too many sections" error in harfbuzz.cc
+# See https://github.com/acinis/RoundHell/issues/9
+# See https://github.com/harfbuzz/harfbuzz/issues/5372
+if(MSVC)
+    target_compile_options(harfbuzz PRIVATE "/bigobj")
+elseif(MINGW)
+    target_compile_options(harfbuzz PRIVATE "-Wa,-mbig-obj")
+endif()
+
 # Link SDL to our executable.
 # This also makes its include directory available to us.
 add_library(vendor INTERFACE)
