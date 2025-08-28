@@ -1,7 +1,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 
-#include "Version.hpp"
+#include "version.hpp"
 
 // SDL3 smoke-test app
 

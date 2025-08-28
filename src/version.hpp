@@ -31,6 +31,6 @@ struct std::formatter<rh::version> : std::formatter<std::string>
     auto format(const rh::version& v, std::format_context& ctx) const -> std::format_context::iterator;
 };
 
-#include "Version.ipp"
+#include "version.ipp"
 
 #endif // ROUNDHELL_VERSION_HPP
