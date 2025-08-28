@@ -20,7 +20,7 @@ int main()
             std::cerr << "Cannot create window: " << SDL_GetError() << "\n";
         }
         else {
-            std::string window_title = std::format("Hello from v{}", rh::Version::current());
+            std::string window_title = std::format("Hello from v{}", rh::version::current());
             if (! SDL_SetWindowTitle(window, window_title.c_str())) {
                 std::cerr << "Cannot set window title: " << SDL_GetError() << "\n";
             }

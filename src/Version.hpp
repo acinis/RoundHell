@@ -8,27 +8,27 @@
 
 namespace rh {
 
-struct Version final
+struct version final
 {
     int major = 0;
     int minor = 0;
     int patch = 0;
 
-    consteval auto operator<=>(const Version& other) const noexcept -> std::strong_ordering;
+    consteval auto operator<=>(const version& other) const noexcept -> std::strong_ordering;
 
-    consteval auto operator==(const Version& other) const noexcept -> bool;
+    consteval auto operator==(const version& other) const noexcept -> bool;
 
-    static consteval Version current() noexcept;
+    static consteval version current() noexcept;
 };
 
-auto operator<<(std::ostream& os, const Version& v) -> std::ostream&;
+auto operator<<(std::ostream& os, const version& v) -> std::ostream&;
 
 } // namespace rh
 
 template<>
-struct std::formatter<rh::Version> : std::formatter<std::string>
+struct std::formatter<rh::version> : std::formatter<std::string>
 {
-    auto format(const rh::Version& v, std::format_context& ctx) const -> std::format_context::iterator;
+    auto format(const rh::version& v, std::format_context& ctx) const -> std::format_context::iterator;
 };
 
 #include "Version.ipp"
