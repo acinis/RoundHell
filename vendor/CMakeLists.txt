@@ -22,6 +22,8 @@ add_subdirectory(SDL_image EXCLUDE_FROM_ALL)
 
 add_subdirectory(EnTT EXCLUDE_FROM_ALL)
 
+add_subdirectory(GLM)
+
 # Fixes GH-9: Compilation fails due to "too many sections" error in harfbuzz.cc
 # See https://github.com/acinis/RoundHell/issues/9
 # See https://github.com/harfbuzz/harfbuzz/issues/5372
@@ -36,6 +38,7 @@ endif()
 add_library(vendor INTERFACE)
 target_link_libraries(
     vendor INTERFACE
+    glm::glm
     EnTT::EnTT
     SDL3_image::SDL3_image
     SDL3_ttf::SDL3_ttf
