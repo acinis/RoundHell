@@ -1,6 +1,6 @@
-#include "VersionDef.hpp"
+#include "version_def.hpp"
 
-consteval auto rh::Version::operator<=>(const rh::Version& other) const noexcept -> std::strong_ordering
+consteval auto rh::version::operator<=>(const rh::version& other) const noexcept -> std::strong_ordering
 {
     if (major != other.major) {
         return major <=> other.major;
@@ -13,7 +13,7 @@ consteval auto rh::Version::operator<=>(const rh::Version& other) const noexcept
     }
 }
 
-consteval auto rh::Version::operator==(const rh::Version& other) const noexcept -> bool
+consteval auto rh::version::operator==(const rh::version& other) const noexcept -> bool
 {
     return
         major == other.major &&
@@ -22,9 +22,9 @@ consteval auto rh::Version::operator==(const rh::Version& other) const noexcept 
     ;
 }
 
-consteval rh::Version rh::Version::current() noexcept
+consteval rh::version rh::version::current() noexcept
 {
-    return rh::Version{
+    return rh::version{
         ROUNDHELL_VERSION_MAJOR,
         ROUNDHELL_VERSION_MINOR,
         ROUNDHELL_VERSION_PATCH
